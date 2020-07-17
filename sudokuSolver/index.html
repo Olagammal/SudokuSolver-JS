@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Sudoku Solver</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1 class="text-center">Sudoku solver</h1>
+            <div class="container font-weight-bold" id="sudokuBoard">
+                <div class="row">
+                    <div class="col-md-12 offset-md-2 col-lg-9 offset-lg-3 col-sm-12 offset-sm-2">
+                        <div class="row row-1">
+                            <input type="text" class="sq-1 text-center" id = "r00" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-2 text-center" id = "r01" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-3 text-center" id = "r02" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-4 text-center" id = "r03" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-5 text-center" id = "r04" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-6 text-center" id = "r05" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-7 text-center" id = "r06" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-8 text-center" id = "r07" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-9 text-center" id = "r08" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                        </div>
+                        <div class="row row-2">
+                            <input type="text" class="sq-1 text-center" id = "r10" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-2 text-center" id = "r11" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-3 text-center" id = "r12" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-4 text-center" id = "r13" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-5 text-center" id = "r14" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-6 text-center" id = "r15" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-7 text-center" id = "r16" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-8 text-center" id = "r17" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-9 text-center" id = "r18" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                        </div>
+                        <div class="row row-3">
+                            <input type="text" class="sq-1 text-center" id = "r20" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-2 text-center" id = "r21" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-3 text-center" id = "r22" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-4 text-center" id = "r23" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-5 text-center" id = "r24" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-6 text-center" id = "r25" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-7 text-center" id = "r26" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-8 text-center" id = "r27" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-9 text-center" id = "r28" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                        </div>
+                        <div class="row row-4">
+                            <input type="text" class="sq-1 text-center" id = "r30" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-2 text-center" id = "r31" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-3 text-center" id = "r32" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-4 text-center" id = "r33" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-5 text-center" id = "r34" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-6 text-center" id = "r35" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-7 text-center" id = "r36" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-8 text-center" id = "r37" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-9 text-center" id = "r38" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                        </div>
+                        <div class="row row-5">
+                            <input type="text" class="sq-1 text-center" id = "r40" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-2 text-center" id = "r41" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-3 text-center" id = "r42" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-4 text-center" id = "r43" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-5 text-center" id = "r44" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-6 text-center" id = "r45" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-7 text-center" id = "r46" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-8 text-center" id = "r47" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-9 text-center" id = "r48" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                        </div>
+                        <div class="row row-6">
+                            <input type="text" class="sq-1 text-center" id = "r50" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-2 text-center" id = "r51" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-3 text-center" id = "r52" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-4 text-center" id = "r53" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-5 text-center" id = "r54" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-6 text-center" id = "r55" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-7 text-center" id = "r56" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-8 text-center" id = "r57" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-9 text-center" id = "r58" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                        </div>
+                        <div class="row row-7">
+                            <input type="text" class="sq-1 text-center" id = "r60" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-2 text-center" id = "r61" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-3 text-center" id = "r62" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-4 text-center" id = "r63" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-5 text-center" id = "r64" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-6 text-center" id = "r65" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-7 text-center" id = "r66" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-8 text-center" id = "r67" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-9 text-center" id = "r68" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                        </div>
+                        <div class="row row-8">
+                            <input type="text" class="sq-1 text-center" id = "r70" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-2 text-center" id = "r71" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-3 text-center" id = "r72" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-4 text-center" id = "r73" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-5 text-center" id = "r74" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-6 text-center" id = "r75" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-7 text-center" id = "r76" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-8 text-center" id = "r77" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-9 text-center" id = "r78" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                        </div>
+                        <div class="row row-9 ">
+                            <input type="text" class="sq-1 text-center" id = "r80" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-2 text-center" id = "r81" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-3 text-center" id = "r82" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-4 text-center" id = "r83" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-5 text-center" id = "r84" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-6 text-center" id = "r85" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-7 text-center" id = "r86" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-8 text-center" id = "r87" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                            <input type="text" class="sq-9 text-center" id = "r88" onclick="enableEditing(this.id)" onkeypress="disableEditing(this.id,event);return enteredValue(this.id,event)" oninput="onEnteringValue(this.id,event)" maxlength="1" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-lg btn-success text-center" onclick="solveSudoku()" data-target="#newModal">Solve For Me!</button>
+                <button class="btn btn-lg btn-danger text-center" onclick="resetBoard('sudokuBoard')">Clear Board</button>
+            </div>
+    </div>
+
+
+    <!--popup-->
+    <div class="popup" id="popup-1">
+        <div class="overlay"></div>
+        <div class="content">
+        <p id="modalContent"> It is an invalid board.</p>
+            <button class="btn btn-primary" onclick="closeModal()"> OK </button>
+        </div>
+    </div>
+
+    <!--jQuery,Popper.js-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!--Custom js-->
+    <script src="js/sudokuSolver.js"></script>
+</body>
+</html>
