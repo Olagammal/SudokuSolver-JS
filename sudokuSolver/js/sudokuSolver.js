@@ -48,7 +48,8 @@ function enteredValue(id,e){
         return false
     }
 }
-function solveSudoku(){
+function solveSudoku(){ 
+    //calculation for solution
     var finalSolvedBoard = solveBoard(myBoard)
     console.log(finalSolvedBoard);
     
@@ -70,12 +71,22 @@ function solveSudoku(){
             }
         }
     }
+    //disable editing in sudoku board after solving once
+    for(var i=0; i<9; i++){
+        for(var j=0; j<9; j++){
+            currentId = "r"+i+j;
+            document.getElementById(currentId).style.cursor = 'default';
+            document.getElementById(currentId).disabled = true
+        }
+    }
 }
 function resetBoard(divId){
     for(var i=0; i<9; i++){
         for(var j=0; j<9; j++){
             currentId = "r"+i+j;
             document.getElementById(currentId).value = "";
+            //enable editing
+            document.getElementById(currentId).disabled = false
         }
     }
     for(var i=0; i<9; i++){
